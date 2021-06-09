@@ -1,7 +1,5 @@
 package integer_break
 
-import java.lang.Integer.max
-
 
 /*
 LeetCode Problems 343:
@@ -12,17 +10,24 @@ Return the maximum product you can get.
 
 fun maxProductOfSum(input: Int): Int {
     check(input in (2..58))
-    return when(input){
-        2 ->  1
-        3 ->  2
+    return when (input) {
+        2 -> 1
+        3 -> 2
         else -> checkProduct(input)
     }
 }
 
-fun breakToSum(integer: Int): Pair<Int, Int> = Pair(integer / 2, integer - (integer / 2))
+fun partition(integer: Int): Pair<Int, Int> =
+    integer.let {
+        if (integer % 3 == 0)
+            Pair(integer - 3, 3)
+        else
+            Pair(integer - 2, 2)
+    }
 
-fun checkProduct(a: Int): Int {
-    val (left, right) = breakToSum(a)
-    if (left == 1 || right == 1 || a >= left * right) return a
-    return checkProduct(left) * checkProduct(right)
-}
+
+fun checkProduct(a: Int): Int =
+    partition(a).let { (l, r) ->
+        if (a in (2..3)) a
+        else checkProduct(l) * checkProduct(r)
+    }

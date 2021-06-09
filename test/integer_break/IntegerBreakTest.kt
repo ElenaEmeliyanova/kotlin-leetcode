@@ -13,6 +13,24 @@ class IntegerBreakTest {
     }
 
     @Test
+    fun `for min input 3 returns result = 2`() {
+        val input = 3
+        assertEquals(2, maxProductOfSum(input))
+    }
+
+    @Test
+    fun `for min input 4 returns result = 4`() {
+        val input = 4
+        assertEquals(4, maxProductOfSum(input))
+    }
+
+    @Test
+    fun `for min input 7 returns result = 12`() {
+        val input = 7
+        assertEquals(12, maxProductOfSum(input))
+    }
+
+    @Test
     fun `for input 10 returns result = 36`() {
         val input = 10
         assertEquals( 36, maxProductOfSum(input))
@@ -21,7 +39,7 @@ class IntegerBreakTest {
     @Test
     fun `for input 9 returns result = 24`() {
         val input = 9
-        assertEquals( 24, maxProductOfSum(input))
+        assertEquals( 27, maxProductOfSum(input))
     }
 
     @Test
